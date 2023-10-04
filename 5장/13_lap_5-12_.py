@@ -1,8 +1,8 @@
 '''
 작성일 : 2023년 10월 04일
 학과 : 컴퓨터 공학부
-학번 : 202395032   
-이름 : 최민호
+학번 : 202395027   
+이름 : 임영훈
 설명 : 더하기 암산 문제 만들기
         2개의 수로 더하기 결과를 맞추는 게임.
         2개의 수는 1~100사이 램덤츠로 출제 됨.
@@ -15,14 +15,29 @@
 
 import random
 
-while True :
-    num1 = random.randint(1,100)
-    num2 = random.randint(1,100)
-    print("{} + {} = ?".format(num1,num2,))
-    total = int(input("정답 입력 : "))
-    if total == num1+num2 :
-        print("정답입니다. (종료키 0)")
-    elif total == 0 :
-        break    
-    else :
-        print("틀렸습니다. {} + {} = {}입니다.".format(num1,num2,num1+num2))
+stop = 1  # 초기화된 종료 변수, 1은 종료하지 않음을 의미
+
+while True:
+    # 1부터 100 사이의 무작위 정수 두 개를 생성
+    num1 = random.randint(1, 101)
+    num2 = random.randint(1, 101)
+
+    # 사용자로부터 두 숫자의 합을 입력 받음
+    correct = int(input("{} + {} = ".format(num1, num2)))
+
+    if correct == num1 + num2:
+        print("참 잘했어요!")
+    elif correct == 0:
+        print("프로그램을 종료합니다.")
+        break  # 사용자가 0을 입력하면 프로그램 종료
+    else:
+        print("정답은", num1 + num2, "입니다.")
+        print("오답입니다.")
+
+    # 종료 여부를 물어봄
+    stop = int(input("종료를 원하면 0을 입력하세요: "))
+
+    if stop == 0:
+        break  # 사용자가 0을 입력하면 프로그램 종료
+    else:
+        print("잘못 입력하셨습니다.")
